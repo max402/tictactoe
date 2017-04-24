@@ -3,7 +3,7 @@ package my.testtasks.games.model;
 /** Created by Grischenko Maxim on 23.04.17. */
 
 public enum Status {
-    IN_PROGRSS("In progress"),
+    IN_PROGRESS("In progress"),
     X_WON("X won"),
     O_WON("O won"),
     DRAW("Draw");

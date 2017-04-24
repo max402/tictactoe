@@ -6,6 +6,15 @@ public class Game {
     private Integer id;
     private String name;
     private Status status;
+    private boolean playable;
+
+    public boolean isPlayable() {
+        return playable;
+    }
+
+    public void setPlayable(boolean playable) {
+        this.playable = playable;
+    }
 
     public Integer getId() {
         return id;

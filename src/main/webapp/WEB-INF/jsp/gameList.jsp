@@ -1,6 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 
@@ -13,7 +12,6 @@
         <th>Name</th>
         <th>Status</th>
         <th></th>
-        <th></th>
     </tr>
     </thead>
     <c:forEach items="${games}" var="game">
@@ -22,8 +20,11 @@
             <td>${game.id}</td>
             <td>${game.name}</td>
             <td>${game.status.toString()}</td>
-            <td></td>
-            <td></td>
+            <td>
+                <c:if test="${game.playable}">
+                    <a href="/game/${game.id}">Play</a>
+                </c:if>
+            </td>
         </tr>
     </c:forEach>
 </table>

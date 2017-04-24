@@ -71,6 +71,6 @@ public class GameDaoImpl implements GameDao {
     }
 
     public List<Game> getAll() {
-        return jdbcTemplate.query("SELECT * FROM games", ROW_MAPPER);
+        return jdbcTemplate.query("SELECT GAMES.ID, GAMES.NAME, STATUSES.NAME AS status, STATUSES.ID=1 as playable FROM games LEFT JOIN STATUSES ON STATUSES.ID=GAMES.STATUS_ID", ROW_MAPPER);
     }
 }
