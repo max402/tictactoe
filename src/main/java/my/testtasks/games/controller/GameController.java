@@ -33,7 +33,7 @@ public class GameController {
     @PostMapping("/")
     public String addGame(HttpServletRequest request) {
         String gameName = request.getParameter("gameName");
-        gameService.save(new Game(gameName, Status.IN_PROGRESS, true));
+        gameService.save(new Game(gameName, Status.IN_PROGRESS));
         return "redirect:/";
     }
 
@@ -50,10 +50,11 @@ public class GameController {
         Game game = gameService.get(game_id);
         if(result != game.getStatus()) {
             game.setStatus(result);
-            gameService.update(game);
+            game = gameService.update(game);
         }
         m.addAttribute("map", map);
         m.addAttribute("status", game.getStatus());
+        m.addAttribute("playable", result.getId()==1);
         return "game";
     }
 

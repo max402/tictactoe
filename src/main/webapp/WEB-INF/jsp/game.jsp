@@ -31,10 +31,9 @@
 <script>
     window.addEventListener("DOMContentLoaded", function () {
         var cells = document.getElementsByClassName("cell");
-        //var status = document.getElementById("status");
         for(var i = 0; i < cells.length; i++) {
             var c = cells.item(i);
-            if(c.innerHTML == '') {
+            if( (${playable}) && (c.innerHTML == '') ) {
                 c.addEventListener("click", function () {
                     document.getElementById("selected").value = this.id;
                     document.getElementById("form").submit();
@@ -50,6 +49,9 @@
         width: 100px;
         border: solid 1px black;
         float: left;
+        font-size: 100px;
+        text-align: center;
+        line-height: 80px;
     }
     #gameField {
         height: 400px;

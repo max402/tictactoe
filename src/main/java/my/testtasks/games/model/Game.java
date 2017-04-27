@@ -6,15 +6,7 @@ public class Game {
     private Integer id;
     private String name;
     private Status status;
-    private boolean playable;
 
-    public boolean isPlayable() {
-        return playable;
-    }
-
-    public void setPlayable(boolean playable) {
-        this.playable = playable;
-    }
 
     public Integer getId() {
         return id;
@@ -47,9 +39,8 @@ public class Game {
     public Game() {
     }
 
-    public Game(String name, Status status, boolean playable) {
+    public Game(String name, Status status) {
         this.name = name;
         this.status = status;
-        this.playable = playable;
     }
 }

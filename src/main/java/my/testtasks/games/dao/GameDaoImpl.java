@@ -66,11 +66,11 @@ public class GameDaoImpl implements GameDao {
     }
 
     public Game get(int id) {
-        List<Game> games = jdbcTemplate.query("SELECT games.id, games.name, statuses.name as status, statuses.id=1 as playable FROM games LEFT JOIN statuses on status_id=statuses.id WHERE id = ?", ROW_MAPPER, id);
+        List<Game> games = jdbcTemplate.query("SELECT games.id, games.name, statuses.name as status FROM games LEFT JOIN statuses on status_id=statuses.id WHERE id = ?", ROW_MAPPER, id);
         return DataAccessUtils.singleResult(games);
     }
 
     public List<Game> getAll() {
-        return jdbcTemplate.query("SELECT GAMES.ID, GAMES.NAME, STATUSES.NAME AS status, STATUSES.ID=1 as playable FROM games LEFT JOIN STATUSES ON STATUSES.ID=GAMES.STATUS_ID", ROW_MAPPER);
+        return jdbcTemplate.query("SELECT GAMES.ID, GAMES.NAME, STATUSES.NAME AS status FROM games LEFT JOIN STATUSES ON STATUSES.ID=GAMES.STATUS_ID", ROW_MAPPER);
     }
 }
