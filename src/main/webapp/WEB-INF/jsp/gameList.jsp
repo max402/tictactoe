@@ -28,6 +28,11 @@
         </tr>
     </c:forEach>
 </table>
+<br>
+<form id="form" method="post">
+    Game name: <input type="text" name="gameName" value="Game ${games.size()+1}">
+    <input type="submit" value="Add game" id="btnAdd" name="btnAdd"/>
+</form>
 
 </body>
 </html>

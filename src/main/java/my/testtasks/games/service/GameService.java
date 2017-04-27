@@ -1,9 +1,12 @@
 package my.testtasks.games.service;
 
+import my.testtasks.games.model.Cell;
+import my.testtasks.games.model.Status;
 import my.testtasks.games.util.NotFoundException;
 import my.testtasks.games.model.Game;
 
 import java.util.List;
+import java.util.Map;
 
 /** Created by Grischenko Maxim on 23.04.17. */
 
@@ -14,10 +17,9 @@ public interface GameService {
 
     Game get(int id) throws NotFoundException;
 
-    //void update(GameTo game);
-
     List<Game> getAll();
 
-    void update(Game game);
+    Game update(Game game);
 
+    Status checkWin(Map<Cell, Integer> moves);
 }

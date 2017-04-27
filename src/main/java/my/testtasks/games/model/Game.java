@@ -43,4 +43,13 @@ public class Game {
     public boolean isNew() {
         return (getId() == null);
     }
+
+    public Game() {
+    }
+
+    public Game(String name, Status status, boolean playable) {
+        this.name = name;
+        this.status = status;
+        this.playable = playable;
+    }
 }

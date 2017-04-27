@@ -44,7 +44,7 @@ public class GameDaoImpl implements GameDao {
         MapSqlParameterSource map = new MapSqlParameterSource()
                 .addValue("id", game.getId())
                 .addValue("name", game.getName())
-                .addValue("status", game.getStatus());
+                .addValue("status_id", game.getStatus().getId());
 
         if (game.isNew()) {
             Number newId = insertGame.executeAndReturnKey(map);
@@ -52,7 +52,7 @@ public class GameDaoImpl implements GameDao {
         } else {
             if (namedParameterJdbcTemplate.update("" +
                   "UPDATE games "+
-                  "SET name=:name, status_id=(SELECT id FROM statuses WHERE name=:status) "+
+                  "SET name=:name, status_id=:status_id "+
                   "WHERE id=:id"
                     , map) == 0) {
                 return null;
@@ -66,7 +66,7 @@ public class GameDaoImpl implements GameDao {
     }
 
     public Game get(int id) {
-        List<Game> games = jdbcTemplate.query("SELECT * FROM games WHERE id = ?", ROW_MAPPER, id);
+        List<Game> games = jdbcTemplate.query("SELECT games.id, games.name, statuses.name as status, statuses.id=1 as playable FROM games LEFT JOIN statuses on status_id=statuses.id WHERE id = ?", ROW_MAPPER, id);
         return DataAccessUtils.singleResult(games);
     }
 

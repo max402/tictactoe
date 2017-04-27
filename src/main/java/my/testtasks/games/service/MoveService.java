@@ -1,23 +1,15 @@
 package my.testtasks.games.service;
 
-import my.testtasks.games.util.NotFoundException;
+import my.testtasks.games.model.Cell;
 import my.testtasks.games.model.Move;
-
-import java.util.List;
+import java.util.Map;
 
 /** Created by Grischenko Maxim on 23.04.17. */
 
 public interface MoveService {
 
-    Move save(Move game);
+    Move save(Move move, int gameId);
 
-    void delete(int id) throws NotFoundException;
+    Map<Cell, Integer> getAll(int gameId);
 
-    Move get(int id) throws NotFoundException;
-
-    //void update(MoveTo game);
-
-    List<Move> getAll();
-
-    void update(Move game);
 }

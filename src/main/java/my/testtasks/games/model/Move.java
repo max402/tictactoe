@@ -39,4 +39,12 @@ public class Move {
     public void setCell(Cell cell) {
         this.cell = cell;
     }
+
+    public Move(int number, Cell cell) {
+        this.number = number;
+        this.cell = cell;
+    }
+
+    public Move() {
+    }
 }
